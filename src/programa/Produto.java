@@ -14,9 +14,15 @@ public class Produto {
     public int getQuantidade(){return quantidade;}
 
     public void setNome(String nome){
+        if(nome == null || nome.isBlank()){
+            System.out.println("Nome inválido");
+        }
         this.nome = nome;
     }
     public void setQuantidade(int qtd){
+        if(qtd <= 0){
+            System.out.println("Quantidade inválida");
+        }
         this.quantidade = qtd;
     }
 }

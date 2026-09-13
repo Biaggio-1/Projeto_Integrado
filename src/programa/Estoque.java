@@ -34,7 +34,7 @@ public class Estoque {
     }
     public void listarNomes() {
         for (Produto produto : produtos.values()) {
-            System.out.printf("nome: %s",produto.getNome());
+            System.out.printf("nome: %s%n",produto.getNome());
 
         }
     }
