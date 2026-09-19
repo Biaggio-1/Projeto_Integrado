@@ -26,16 +26,18 @@ public class Estoque {
     public int size(){
         return produtos.size();
     }
-    public void listar() {
-        for (Produto produto : produtos.values()) {
-            System.out.printf("nome: %s"+"|"+"Quantidade: %d",produto.getNome(), produto.getQuantidade());
 
-        }
-    }
     public void listarNomes() {
         for (Produto produto : produtos.values()) {
             System.out.printf("nome: %s%n",produto.getNome());
 
+        }
+        
+    }
+    
+    public static void limparTerminal(){
+        for(int i = 0 ;i < 50; i++){
+            System.out.println();
         }
     }
 }
