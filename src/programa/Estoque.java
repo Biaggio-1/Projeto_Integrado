@@ -22,19 +22,24 @@ public class Estoque {
         Produto produto = produtos.get(chave);
         return produto;
     }
+    public void infoProduto(Produto produto){
+        System.out.printf("Nome: %s%n",produto.getNome());
+        System.out.printf("Quantidade: %d%n",produto.getQuantidade());
+        System.out.printf("Categoria: %s%n",produto.getCategoria());
 
+    }
     public int size(){
         return produtos.size();
     }
 
     public void listarNomes() {
         for (Produto produto : produtos.values()) {
-            System.out.printf("nome: %s%n",produto.getNome());
+            System.out.printf("Nome: %s%n",produto.getNome());
 
         }
-        
+
     }
-    
+
     public static void limparTerminal(){
         for(int i = 0 ;i < 50; i++){
             System.out.println();

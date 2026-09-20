@@ -10,6 +10,7 @@ public class Main {
         String entrada;
         String nome;
         int quantidade;
+        String categoria;
         boolean exe = true;
 
 
@@ -40,8 +41,17 @@ public class Main {
                         System.out.println("Digite uma quantidade válida");
                         inputDados.nextLine();
                         continue;
+
                     }
-                    Produto produto = new Produto(nome, quantidade);
+                    System.out.println("Categoria do produto: ");
+                    categoria = inputDados.nextLine();
+                    if (categoria == null || categoria.isBlank()) {
+                        estoque.limparTerminal();
+                        System.out.println("Categoria inválida");
+                        continue;
+                    }
+
+                    Produto produto = new Produto(nome, quantidade, categoria);
                     estoque.addProdutos(produto);
                     estoque.limparTerminal();
                     System.out.println("Produto adicionado!");
@@ -83,9 +93,11 @@ public class Main {
                         continue;
                     }
                     boolean condicao = true;
+                    estoque.limparTerminal();
                     while(condicao) {
-                        estoque.limparTerminal();
-                        System.out.println("1-Editar\n2-Sair");
+                        estoque.listarNomes();
+                        System.out.println();
+                        System.out.println("1-Editar informações\n2-Sair");
                         if(inputDados.hasNextInt()) {
                             int opcao = inputDados.nextInt();
                             inputDados.nextLine();
@@ -93,15 +105,17 @@ public class Main {
 
                             case 1:
                                 estoque.limparTerminal();
+                                System.out.println("Total de itens: "+estoque.size());
                                 estoque.listarNomes();
                                 System.out.println();
                                 System.out.println("Digite o nome do produto para edita-lo:");
                                 String busca = inputDados.nextLine();
                                 produto = estoque.buscarProduto(busca);
 
-
                                 if (produto != null) {
                                     estoque.limparTerminal();
+                                    estoque.infoProduto(produto);
+                                    System.out.println();
                                     System.out.print("Digite o novo nome do produto: ");
                                     nome = inputDados.nextLine();
                                     if (nome == null || nome.isBlank()) {
@@ -121,21 +135,31 @@ public class Main {
                                     } else {
                                         estoque.limparTerminal();
                                         System.out.println("Apenas dígitos.");
+                                        inputDados.nextLine();
                                         break;
+                                    }
+                                    System.out.print("Categoria do Produto: ");
+                                    categoria = inputDados.nextLine();
+                                    if (categoria == null || categoria.isBlank()) {
+                                        estoque.limparTerminal();
+                                        System.out.println("Categoria inválida");
+                                        continue;
                                     }
                                     produto = estoque.produtos.remove(busca);
                                     produto.setNome(nome);
                                     produto.setQuantidade(quantidade);
+                                    produto.setCategoria(categoria);
                                     estoque.produtos.put(produto.getNome(), produto);
                                     estoque.limparTerminal();
                                     System.out.println("Produto editado com sucesso!");
                                     break;
 
                                 }
-                                estoque.limparTerminal();
-                                System.out.println("Produto não encontrado");
-                                break;
-
+                                else {
+                                    estoque.limparTerminal();
+                                    System.out.println("Produto não encontrado");
+                                    break;
+                                }
                             case 2:
                                 estoque.limparTerminal();
                                 System.out.println("Saindo...");
@@ -146,6 +170,7 @@ public class Main {
                             default:
                                 estoque.limparTerminal();
                                 System.out.println("Digite apenas 1 ou 2.");
+                                inputDados.nextLine();
                                 break;
 
 
@@ -155,7 +180,7 @@ public class Main {
                             estoque.limparTerminal();
                             System.out.println("Digite apenas 1 ou 2.");
                             inputDados.nextLine();
-                            break;
+                            continue;
                         }
                 }
                 break;
