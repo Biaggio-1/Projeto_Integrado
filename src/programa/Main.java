@@ -13,7 +13,6 @@ public class Main {
         String categoria;
         boolean exe = true;
 
-
         while (exe) {
             System.out.println("*****-Menu-*****\n     Digite:\n(A)dicionar (D)eletar (P)rocurar (S)air");
             entrada = inputDados.nextLine().toLowerCase();
@@ -170,7 +169,6 @@ public class Main {
                             default:
                                 estoque.limparTerminal();
                                 System.out.println("Digite apenas 1 ou 2.");
-                                inputDados.nextLine();
                                 break;
 
 
