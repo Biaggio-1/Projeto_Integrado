@@ -1,4 +1,4 @@
-Projeto integrado 03/10/2026
+Projeto integrado 24/11/2026
 
 RA:26001001	NOME: Kauã Biaggio Oliveira
 RA:26001446	NOME: Luiz Gustavo Ribeiro Silva
